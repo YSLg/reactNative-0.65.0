@@ -1,0 +1,6 @@
+module Pods_xwhy_xwhyTests {
+  umbrella header "Pods-xwhy-xwhyTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
