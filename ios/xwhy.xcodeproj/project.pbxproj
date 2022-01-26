@@ -114,7 +114,6 @@
 				969608CE282945B7960EDD5B /* Pods-xwhy-xwhyTests.debug.xcconfig */,
 				FA564CFB80B8573E05EB32A5 /* Pods-xwhy-xwhyTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -485,6 +484,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = xwhy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

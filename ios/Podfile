@@ -12,6 +12,10 @@ target 'xwhy' do
     :hermes_enabled => false
   )
 
+  pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
+
+  pod 'react-native-pager-view', :path => '../node_modules/react-native-pager-view'
+
   target 'xwhyTests' do
     inherit! :complete
     # Pods for testing

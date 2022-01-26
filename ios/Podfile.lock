@@ -269,6 +269,8 @@ PODS:
     - React-jsi (= 0.65.0)
     - React-perflogger (= 0.65.0)
   - React-jsinspector (0.65.0)
+  - react-native-pager-view (5.4.9):
+    - React-Core
   - React-perflogger (0.65.0)
   - React-RCTActionSheet (0.65.0):
     - React-Core/RCTActionSheetHeaders (= 0.65.0)
@@ -333,6 +335,8 @@ PODS:
     - React-cxxreact (= 0.65.0)
     - React-jsi (= 0.65.0)
     - React-perflogger (= 0.65.0)
+  - RNDeviceInfo (8.4.8):
+    - React-Core
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -376,6 +380,7 @@ DEPENDENCIES:
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
+  - react-native-pager-view (from `../node_modules/react-native-pager-view`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
@@ -388,6 +393,7 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - RNDeviceInfo (from `../node_modules/react-native-device-info`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -439,6 +445,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsiexecutor"
   React-jsinspector:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
+  react-native-pager-view:
+    :path: "../node_modules/react-native-pager-view"
   React-perflogger:
     :path: "../node_modules/react-native/ReactCommon/reactperflogger"
   React-RCTActionSheet:
@@ -463,6 +471,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/runtimeexecutor"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNDeviceInfo:
+    :path: "../node_modules/react-native-device-info"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -496,6 +506,7 @@ SPEC CHECKSUMS:
   React-jsi: 875bcbe2037c9cae07fbda7dd5827fbca06cbdc6
   React-jsiexecutor: 11ec08ad247abb44113ccb3d2b66f7e856d1cdf4
   React-jsinspector: 2aa5dc1b9a02a81c0dcc70c00f2cbe1cd4b875c4
+  react-native-pager-view: 311c10a4eead1be627cad59062aa059d8108b943
   React-perflogger: 494c61caaf9b7da0a0a612fa4ed570ab7ab5819b
   React-RCTActionSheet: 0ea18583618e2451889be1ce1f658ae8cb436b2e
   React-RCTAnimation: 487a44abe7f082afa2997add929765b9c81d4abc
@@ -508,9 +519,10 @@ SPEC CHECKSUMS:
   React-RCTVibration: ca17687ea259e8b6bbd4ad74f1f6ec87bff845d8
   React-runtimeexecutor: a9a1ac6a60389c3c588fd9b9158a30ed4d8d28a4
   ReactCommon: c11b11a5dc8187826144b7b3d72125c77a1b7b1a
+  RNDeviceInfo: 417b2ef4456c13a9d50ad8c57895eea837b735a8
   Yoga: 1561f557b0c2b6047a91f7619f666134e2288916
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 4cbdbcd12f25998d5a2919f019346490a3e8ec4b
+PODFILE CHECKSUM: 1e91c07319a37d4b00f3201f567a1246a9d6259a
 
 COCOAPODS: 1.11.2
