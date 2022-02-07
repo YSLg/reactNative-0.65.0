@@ -5,7 +5,6 @@ import {
     Image,
     TouchableHighlight,
     Dimensions,
-    AsyncStorage,
     StatusBar,
 } from 'react-native';
 import React, { Component } from 'react';

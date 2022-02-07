@@ -1,42 +1,21 @@
-/**
- * Copyright 2016 Facebook, Inc.
- *
- * You are hereby granted a non-exclusive, worldwide, royalty-free license to
- * use, copy, modify, and distribute this software in source code or binary
- * form for use in connection with the web services and APIs provided by
- * Facebook.
- *
- * As with any software that integrates with the Facebook platform, your use
- * of this software is subject to the Facebook Developer Principles and
- * Policies [http://developers.facebook.com/policy/]. This copyright notice
- * shall be included in all copies or substantial portions of the software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
- * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
- * DEALINGS IN THE SOFTWARE
- *
- * @flow
- */
-
-'use strict';
-
-import React from 'react';
+import * as React from 'react';
+import {View, Button, Text} from 'react-native';
 import {
-  StyleSheet,
-  View,
-  AsyncStorage,
-  TouchableOpacity,
-  InteractionManager,
-  ImageBackground,
-  Linking,
-  Text,
-} from 'react-native';
-
+  NavigationContainer,
+  getFocusedRouteNameFromRoute,
+} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import fontElloConfig from './assets/fonts/config.json';
+import LoginByPwdModal from './modals/login/LoginByPwdModal';
+import LoginByCodeModal from './modals/login/LoginByCodeModal';
+import {createIconSetFromFontello} from 'react-native-vector-icons';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as loginAction from './store/actions/login.action';
+import * as tokenAction from './store/actions/token.action';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 import {
   initToken,
@@ -44,143 +23,182 @@ import {
   deleteToken,
   newToken,
 } from './store/actions/token.action';
-import GuildPage from './pages/home/Guild';
+const IonIcons = createIconSetFromFontello(fontElloConfig);
 
-class XtyApp extends React.Component {
+function getHeaderTitle(route) {
+  // If the focused route is not found, we need to assume it's the initial screen
+  // This can happen during if there hasn't been any navigation inside the screen
+  // In our case, it's "Feed" as that's the first screen inside the navigator
+  const routeName = getFocusedRouteNameFromRoute(route) ?? 'Feed';
+
+  switch (routeName) {
+    case 'Feed':
+      return '首页';
+    case 'Profile':
+      return '关注';
+    case 'Account':
+      return '我的';
+  }
+}
+function FeedScreen({navigation}) {
+  return (
+    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <Button
+        title="Go to Login"
+        onPress={() => navigation.navigate('LoginByPwdModal')}
+      />
+      <Button
+        title="Go to CodeLogin"
+        onPress={() => navigation.navigate('LoginByCodeModal')}
+      />
+    </View>
+  );
+}
+
+function ProfileScreen() {
+  return (
+    <View>
+      <Text>22222222</Text>
+    </View>
+  );
+}
+
+function AccountScreen() {
+  return (
+    <View>
+      <Text>22222222</Text>
+    </View>
+  );
+}
+
+function SettingsScreen() {
+  return (
+    <View>
+      <Text>3333333</Text>
+    </View>
+  );
+}
+
+const Tab = createBottomTabNavigator();
+
+function HomeTabs() {
+  return (
+    <Tab.Navigator screenOptions={{headerShown: false}}>
+      <Tab.Screen
+        name="Feed"
+        component={FeedScreen}
+        options={{
+          tabBarLabel: '首页',
+          tabBarIcon: ({color, size}) => (
+            <IonIcons name="home" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{
+          tabBarLabel: '关注',
+          tabBarIcon: ({color, size}) => (
+            <IonIcons name="focus" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Account"
+        component={AccountScreen}
+        options={{
+          tabBarLabel: '我的',
+          tabBarIcon: ({color, size}) => (
+            <IonIcons name="mine" color={color} size={size} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
+  );
+}
+
+const Stack = createNativeStackNavigator();
+class APP extends React.Component {
   constructor() {
     super();
     this.isFirst = false;
     this.state = {
-      isFirst: false,
+        isFirst: false,
     };
-  }
+}
+async componentDidMount() {
+  // AsyncStorage.getItem('isFirst').then(data => {
+  //     if (!data) {
+  //         this.setState({
+  //             isFirst: true,
+  //         });
+  //     }
+  // });
+  // 初始化token
+  this.props.dispatch(await initToken());
+  // 获取版本
+  // this.props.dispatch(getVersion());
 
-  async componentDidMount() {
-    AsyncStorage.getItem('isFirst').then(data => {
-      if (!data) {
-        this.setState({
-          isFirst: false,
-        });
-      }
-    });
-    // 初始化token
-    this.props.dispatch(await initToken());
-    // 获取版本
-    this.props.dispatch(getVersion());
-
-    setTimeout(() => {
-      SplashScreen.hide();
-    }, 1000);
-  }
-
-  async componentWillReceiveProps(nextProps) {
-    // 初始化失败或刷新token失败则重新生成token
-    if (nextProps.initTokenFail || nextProps.refreshTokenFail) {
+  // setTimeout(() => {
+  //     SplashScreen.hide();
+  // }, 1000);
+}
+async componentWillReceiveProps(nextProps) {
+  // 初始化失败或刷新token失败则重新生成token
+  if (nextProps.initTokenFail || nextProps.refreshTokenFail) {
       this.props.dispatch(await deleteToken());
-    }
+  }
 
-    // 更新token
-    if (nextProps.initToken && nextProps.token) {
+  // 更新token
+  if (nextProps.initToken && nextProps.token) {
+    console.log('????>>>>>>>>>>>>>>>6666666s');
       this.props.dispatch(await updateToken(nextProps.token));
-    }
+  }
 
-    // 退出登录 删除token, 并重新生成token
-    if (nextProps.isLoginOut) {
+  // 退出登录 删除token, 并重新生成token
+  if (nextProps.isLoginOut) {
       this.props.dispatch(await deleteToken());
-    }
+  }
 
-    if (nextProps.deleteTokenDone) {
+  if (nextProps.deleteTokenDone) {
       this.props.dispatch(await newToken());
-    }
+  }
 
-    if (nextProps.loginSuccess && nextProps.tokenData) {
+  if (nextProps.loginSuccess && nextProps.tokenData) {
       this.props.dispatch(await updateToken(nextProps.tokenData));
-    }
-  }
-
-  _onPress() {
-    this.setState({
-      isFirst: false,
-    });
-  }
-
-  renderUpdate() {
-    const {downloadUrl, hintMsg} = this.props;
-    let textarray = [];
-    console.log(hintMsg);
-    try {
-      textarray = JSON.parse(hintMsg);
-    } catch (e) {
-      console.log(e);
-    }
-    return (
-      <View
-        style={{
-          justifyContent: 'center',
-          alignItems: 'center',
-          flexDirection: 'row',
-          flex: 1,
-          backgroundColor: 'rgba(0,0,0,0.4)',
-        }}>
-        14223646
-      </View>
-    );
-  }
-
-  render() {
-    console.log('render xtyapp');
-    if (this.props.hintType === 1) {
-      return this.renderUpdate();
-    } else {
-      if (this.state.isFirst) {
-        return (
-          <View>
-            <Text>2352634576</Text>
-          </View>
-        );
-      } else {
-        return (
-          <View>
-            <Text>2345324578</Text>
-          </View>
-        );
-      }
-    }
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
+render () {
+  return (<NavigationContainer>
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Home"
+        component={HomeTabs}
+        options={({route}) => ({
+          headerTitle: getHeaderTitle(route),
+        })}
+      />
+      <Stack.Screen name="Settings" component={SettingsScreen} />
+      <Stack.Screen
+        name="LoginByPwdModal"
+        options={({route}) => ({
+          headerTitle: '登录',
+        })}
+        component={LoginByPwdModal}
+      />
+      <Stack.Screen
+        name="LoginByCodeModal"
+        options={({route}) => ({
+          headerTitle: '登录',
+        })}
+        component={LoginByCodeModal}
+      />
+    </Stack.Navigator>
+  </NavigationContainer>)
+}
+}
+const mapStateToProps = state => ({
+  ...state.token,
 });
-
-// XtyApp.propTypes = {
-//   initToken: PropTypes.bool.isRequired,
-//   refreshTokenFail: PropTypes.bool.isRequired,
-//   initTokenFail: PropTypes.bool.isRequired,
-//   isLoginOut: PropTypes.bool.isRequired,
-//   loginSuccess: PropTypes.bool.isRequired,
-//   deleteTokenDone: PropTypes.bool.isRequired,
-//   token: PropTypes.object.isRequired,
-//   tokenData: PropTypes.object.isRequired,
-//   dispatch: PropTypes.func.isRequired,
-//   hintType: PropTypes.number,
-// };
-
-export default connect(state => {
-  return {
-    initToken: state.token.initToken,
-    token: state.token.token,
-    refreshTokenFail: state.token.refreshTokenFail,
-    initTokenFail: state.token.initTokenFail,
-    deleteTokenDone: state.token.deleteTokenDone,
-    isLoginOut: state.token.isLoginOut,
-    loginSuccess: state.login.loginSuccess,
-    tokenData: state.login.token,
-    hintType: state.version.hintType,
-    hintMsg: state.version.hintMsg,
-    version: state.version.versionNumber,
-    downloadUrl: state.version.downloadUrl,
-  };
-})(XtyApp);
+export default connect(mapStateToProps)(APP);

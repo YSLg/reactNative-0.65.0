@@ -59,7 +59,7 @@ export const showTips = function showTips(msg, ...rest) {
 function _fetch(url, method, body, silence) {
     return new Promise(async (resolve, reject) => {
         let token = await Token.getAccessToken();
-        console.log(token, 'token++++++++++__________');
+        console.log(token, '???>>>>>>>>>');
         fetch(url, {
             method: method,
             body: buildParams(body),

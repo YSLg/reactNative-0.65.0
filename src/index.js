@@ -31,27 +31,11 @@ function initializtion() {
         store: null,
       };
     }
-
-    componentDidMount() {
-      this.setState({
-        store,
-        storeCreated: true,
-        storeRehydrated: true,
-      });
-    }
-
     render() {
       return (
-        <SafeAreaView>
-          <Provider store={store}>
-            <StatusBar
-              translucent={true}
-              backgroundColor="red"
-              barStyle="dark-content"
-            />
-            <XtyApp />
-          </Provider>
-        </SafeAreaView>
+        <Provider store={store}>
+          <XtyApp />
+        </Provider>
       );
     }
   }

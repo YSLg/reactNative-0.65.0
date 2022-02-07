@@ -1,38 +1,62 @@
 {
   "images" : [
     {
+      "filename" : "小望慧眼logo_1024*1024iPadNotifications_20pt.png",
       "idiom" : "iphone",
-      "size" : "29x29",
-      "scale" : "2x"
+      "scale" : "2x",
+      "size" : "20x20"
     },
     {
+      "filename" : "小望慧眼logo_1024*1024iPadProApp_83.5pt@2x.png",
       "idiom" : "iphone",
-      "size" : "29x29",
-      "scale" : "3x"
+      "scale" : "3x",
+      "size" : "20x20"
     },
     {
+      "filename" : "小望慧眼logo_1024*1024iPadSpootlight5_29pt@2x.png",
       "idiom" : "iphone",
-      "size" : "40x40",
-      "scale" : "2x"
+      "scale" : "2x",
+      "size" : "29x29"
     },
     {
+      "filename" : "小望慧眼logo_1024*1024iPadSpootlight7_40pt@2x.png",
       "idiom" : "iphone",
-      "size" : "40x40",
-      "scale" : "3x"
+      "scale" : "3x",
+      "size" : "29x29"
     },
     {
+      "filename" : "小望慧眼logo_1024*1024iPhoneApp_60pt@3x.png",
       "idiom" : "iphone",
-      "size" : "60x60",
-      "scale" : "2x"
+      "scale" : "2x",
+      "size" : "40x40"
     },
     {
+      "filename" : "小望慧眼logo_1024*1024iPhoneSpootlight7_40pt@2x.png",
       "idiom" : "iphone",
-      "size" : "60x60",
-      "scale" : "3x"
+      "scale" : "3x",
+      "size" : "40x40"
+    },
+    {
+      "filename" : "小望慧眼logo_1024*1024iPhoneNotification_20pt@3x.png",
+      "idiom" : "iphone",
+      "scale" : "2x",
+      "size" : "60x60"
+    },
+    {
+      "filename" : "小望慧眼logo_1024*1024iPhoneSpootlight5_29pt@3x.png",
+      "idiom" : "iphone",
+      "scale" : "3x",
+      "size" : "60x60"
+    },
+    {
+      "filename" : "小望慧眼logo_1024*1024store_1024pt.png",
+      "idiom" : "ios-marketing",
+      "scale" : "1x",
+      "size" : "1024x1024"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }

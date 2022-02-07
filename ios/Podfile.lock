@@ -271,6 +271,8 @@ PODS:
   - React-jsinspector (0.65.0)
   - react-native-pager-view (5.4.9):
     - React-Core
+  - react-native-safe-area-context (3.3.2):
+    - React-Core
   - React-perflogger (0.65.0)
   - React-RCTActionSheet (0.65.0):
     - React-Core/RCTActionSheetHeaders (= 0.65.0)
@@ -335,7 +337,16 @@ PODS:
     - React-cxxreact (= 0.65.0)
     - React-jsi (= 0.65.0)
     - React-perflogger (= 0.65.0)
+  - RNCAsyncStorage (1.15.17):
+    - React-Core
   - RNDeviceInfo (8.4.8):
+    - React-Core
+  - RNGestureHandler (2.2.0):
+    - React-Core
+  - RNScreens (3.10.2):
+    - React-Core
+    - React-RCTImage
+  - RNVectorIcons (9.0.0):
     - React-Core
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
@@ -381,6 +392,7 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - react-native-pager-view (from `../node_modules/react-native-pager-view`)
+  - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
@@ -393,7 +405,11 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
+  - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
+  - RNScreens (from `../node_modules/react-native-screens`)
+  - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -447,6 +463,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   react-native-pager-view:
     :path: "../node_modules/react-native-pager-view"
+  react-native-safe-area-context:
+    :path: "../node_modules/react-native-safe-area-context"
   React-perflogger:
     :path: "../node_modules/react-native/ReactCommon/reactperflogger"
   React-RCTActionSheet:
@@ -471,8 +489,16 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/runtimeexecutor"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNCAsyncStorage:
+    :path: "../node_modules/@react-native-async-storage/async-storage"
   RNDeviceInfo:
     :path: "../node_modules/react-native-device-info"
+  RNGestureHandler:
+    :path: "../node_modules/react-native-gesture-handler"
+  RNScreens:
+    :path: "../node_modules/react-native-screens"
+  RNVectorIcons:
+    :path: "../node_modules/react-native-vector-icons"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -507,6 +533,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 11ec08ad247abb44113ccb3d2b66f7e856d1cdf4
   React-jsinspector: 2aa5dc1b9a02a81c0dcc70c00f2cbe1cd4b875c4
   react-native-pager-view: 311c10a4eead1be627cad59062aa059d8108b943
+  react-native-safe-area-context: 5cf05f49df9d17261e40e518481f2e334c6cd4b5
   React-perflogger: 494c61caaf9b7da0a0a612fa4ed570ab7ab5819b
   React-RCTActionSheet: 0ea18583618e2451889be1ce1f658ae8cb436b2e
   React-RCTAnimation: 487a44abe7f082afa2997add929765b9c81d4abc
@@ -519,7 +546,11 @@ SPEC CHECKSUMS:
   React-RCTVibration: ca17687ea259e8b6bbd4ad74f1f6ec87bff845d8
   React-runtimeexecutor: a9a1ac6a60389c3c588fd9b9158a30ed4d8d28a4
   ReactCommon: c11b11a5dc8187826144b7b3d72125c77a1b7b1a
+  RNCAsyncStorage: 105173940b40e85e274023966567ac11b7683cf8
   RNDeviceInfo: 417b2ef4456c13a9d50ad8c57895eea837b735a8
+  RNGestureHandler: bf572f552ea324acd5b5464b8d30755b2d8c1de6
+  RNScreens: d6da2b9e29cf523832c2542f47bf1287318b1868
+  RNVectorIcons: 4143ba35feebab8fdbe6bc43d1e776b393d47ac8
   Yoga: 1561f557b0c2b6047a91f7619f666134e2288916
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 

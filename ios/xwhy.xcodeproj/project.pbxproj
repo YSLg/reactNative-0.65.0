@@ -14,6 +14,7 @@
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		9ED80445BBB312A0570BE77A /* libPods-xwhy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95361BF7EF877D0A30A1C94F /* libPods-xwhy.a */; };
 		A631FDF8BCBAEDB37E91C0FB /* libPods-xwhy-xwhyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8051E2D803781A9B02C5FF2 /* libPods-xwhy-xwhyTests.a */; };
+		B1200CCE27A27F0D002C9047 /* xwhy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B1200CCD27A27F0D002C9047 /* xwhy.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 		95361BF7EF877D0A30A1C94F /* libPods-xwhy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-xwhy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		969608CE282945B7960EDD5B /* Pods-xwhy-xwhyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xwhy-xwhyTests.debug.xcconfig"; path = "Target Support Files/Pods-xwhy-xwhyTests/Pods-xwhy-xwhyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A8051E2D803781A9B02C5FF2 /* libPods-xwhy-xwhyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-xwhy-xwhyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1200CCD27A27F0D002C9047 /* xwhy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = xwhy.ttf; path = ../src/assets/fonts/font/xwhy.ttf; sourceTree = "<group>"; };
 		C459D75092FA8558396BBC57 /* Pods-xwhy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xwhy.debug.xcconfig"; path = "Target Support Files/Pods-xwhy/Pods-xwhy.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FA564CFB80B8573E05EB32A5 /* Pods-xwhy-xwhyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xwhy-xwhyTests.release.xcconfig"; path = "Target Support Files/Pods-xwhy-xwhyTests/Pods-xwhy-xwhyTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 		13B07FAE1A68108700A75B9A /* xwhy */ = {
 			isa = PBXGroup;
 			children = (
+				B1200CCD27A27F0D002C9047 /* xwhy.ttf */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -244,6 +247,7 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				B1200CCE27A27F0D002C9047 /* xwhy.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +486,7 @@
 			baseConfigurationReference = C459D75092FA8558396BBC57 /* Pods-xwhy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
@@ -509,6 +514,7 @@
 			baseConfigurationReference = 572216764630A2293DDED7CA /* Pods-xwhy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = xwhy/Info.plist;

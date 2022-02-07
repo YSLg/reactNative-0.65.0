@@ -5,11 +5,11 @@ import * as Req from '../../utils';
  */
 const TIMEOUT = 5000; // 设置5秒超时
 export default store => next => action => {
+    console.log('request,?????????????????--------', action.type);
     if (!action.type) {
         next(action);
     }
     let UpperMethod = action.type.toUpperCase();
-    console.log('request,--------', action);
     if (UpperMethod === 'POST' || UpperMethod === 'GET') {
         let func = Req[UpperMethod];
         let { url, params, apiName, append } = action.payload;

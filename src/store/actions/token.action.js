@@ -30,11 +30,19 @@ export async function initToken() {
  */
 export function newToken() {
     return dispatch => {
+        // const params = {
+        //     uuid: DeviceInfo.getUniqueID(),
+        //     deviceType: DeviceInfo.getManufacturer(),
+        //     deviceId: DeviceInfo.getDeviceId(),
+        //     appVersion: '2.0',
+        // };
         const params = {
-            uuid: DeviceInfo.getUniqueID(),
-            deviceType: DeviceInfo.getManufacturer(),
-            deviceId: DeviceInfo.getDeviceId(),
-            appVersion: '2.0',
+            uuid: "1",
+            deviceType: "iPhone12,3",
+            deviceId: "Apple iPhone12,3",
+            appVersion: "2.0",
+            appId: "APP_WANDER",
+            appKey: "SgM3YTQvZiwb0lx3xK6dz1k5XzMqyETK"
         };
         dispatch({
             type: 'POST',
@@ -54,10 +62,10 @@ export function newToken() {
 export function refreshToken() {
     return dispatch => {
         const params = {
-            uuid: DeviceInfo.getUniqueID(),
-            deviceType: DeviceInfo.getManufacturer(),
-            deviceId: DeviceInfo.getDeviceId(),
-            appVersion: '2.0',
+            // uuid: DeviceInfo.getUniqueID(),
+            // deviceType: DeviceInfo.getManufacturer(),
+            // deviceId: DeviceInfo.getDeviceId(),
+            // appVersion: '2.0',
         };
         dispatch({
             type: 'POST',

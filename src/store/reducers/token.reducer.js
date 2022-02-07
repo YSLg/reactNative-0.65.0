@@ -52,7 +52,6 @@ function tokenInitDone(state, action) {
     } else {
         initTokenFail = true;
     }
-
     return {
         ...state,
         initToken: initToken,

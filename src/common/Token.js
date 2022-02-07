@@ -1,6 +1,6 @@
 'use strict';
 
-import { AsyncStorage } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { TOKEN_KEY } from '../store/constants/AsyncStorageKey';
 
 const DEFAULT_TOKEN = {
@@ -20,10 +20,9 @@ class Token {
         if (this.token.token !== '') {
             return this.token;
         }
-
         try {
             let accessToken = await AsyncStorage.getItem(TOKEN_KEY);
-            console.log(AsyncStorage.getItem, accessToken, '?????>>?????');
+            console.log(accessToken, 'this.token.token????>>>>999999999>>>>>>>');
             accessToken = accessToken ? JSON.parse(accessToken) : null;
             if (!accessToken || !accessToken.token) {
                 return DEFAULT_TOKEN;
