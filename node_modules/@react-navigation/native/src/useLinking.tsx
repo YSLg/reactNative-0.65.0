@@ -7,6 +7,7 @@ import {
   NavigationState,
   ParamListBase,
 } from '@react-navigation/core';
+import isEqual from 'fast-deep-equal';
 import { nanoid } from 'nanoid/non-secure';
 import * as React from 'react';
 
@@ -106,6 +107,7 @@ const createMemoryHistory = () => {
         // - This is the first time any state modifications are done
         //   So we need to push the entry as there's nothing to replace
         items = [{ path, state, id }];
+        index = 0;
       } else {
         items[index] = { path, state, id };
       }
@@ -121,20 +123,14 @@ const createMemoryHistory = () => {
     go(n: number) {
       interrupt();
 
-      if (n > 0) {
-        // We shouldn't go forward more than available index
-        n = Math.min(n, items.length - 1);
-      } else if (n < 0) {
-        // We shouldn't go back more than the 0 index
-        // Otherwise we'll exit the page
-        n = index + n < 0 ? -index : n;
-      }
-
       if (n === 0) {
         return;
       }
 
-      index += n;
+      // We shouldn't go back more than the 0 index (otherwise we'll exit the page)
+      // Or forward more than the available index (or the app will crash)
+      index =
+        n < 0 ? Math.max(index - n, 0) : Math.min(index + n, items.length - 1);
 
       // When we call `history.go`, `popstate` will fire when there's history to go back to
       // So we need to somehow handle following cases:
@@ -461,7 +457,12 @@ export default function useLinking(
               // Ignore any errors from deep linking.
               // This could happen in case of malformed links, navigation object not being initialized etc.
               console.warn(
-                `An error occurred when trying to handle the link '${path}': ${e.message}`
+                `An error occurred when trying to handle the link '${path}': ${
+                  typeof e === 'object' && e != null && 'message' in e
+                    ? // @ts-expect-error: we're already checking for this
+                      e.message
+                    : e
+                }`
               );
             }
           } else {
@@ -482,6 +483,34 @@ export default function useLinking(
       return;
     }
 
+    const getPathForRoute = (
+      route: ReturnType<typeof findFocusedRoute>,
+      state: NavigationState
+    ): string => {
+      // If the `route` object contains a `path`, use that path as long as `route.name` and `params` still match
+      // This makes sure that we preserve the original URL for wildcard routes
+      if (route?.path) {
+        const stateForPath = getStateFromPathRef.current(
+          route.path,
+          configRef.current
+        );
+
+        if (stateForPath) {
+          const focusedRoute = findFocusedRoute(stateForPath);
+
+          if (
+            focusedRoute &&
+            focusedRoute.name === route.name &&
+            isEqual(focusedRoute.params, route.params)
+          ) {
+            return route.path;
+          }
+        }
+      }
+
+      return getPathFromStateRef.current(state, configRef.current);
+    };
+
     if (ref.current) {
       // We need to record the current metadata on the first render if they aren't set
       // This will allow the initial state to be in the history entry
@@ -489,8 +518,7 @@ export default function useLinking(
 
       if (state) {
         const route = findFocusedRoute(state);
-        const path =
-          route?.path ?? getPathFromStateRef.current(state, configRef.current);
+        const path = getPathForRoute(route, state);
 
         if (previousStateRef.current === undefined) {
           previousStateRef.current = state;
@@ -510,10 +538,14 @@ export default function useLinking(
       const previousState = previousStateRef.current;
       const state = navigation.getRootState();
 
+      // root state may not available, for example when root navigators switch inside the container
+      if (!state) {
+        return;
+      }
+
       const pendingPath = pendingPopStatePathRef.current;
       const route = findFocusedRoute(state);
-      const path =
-        route?.path ?? getPathFromStateRef.current(state, configRef.current);
+      const path = getPathForRoute(route, state);
 
       previousStateRef.current = state;
       pendingPopStatePathRef.current = undefined;
