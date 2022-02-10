@@ -12,7 +12,7 @@ class Home extends Component {
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
         <Button
           title="Go to Login"
-          onPress={() => this.props.navigation.navigate('Login')}
+          onPress={() => this.props.navigation.navigate('LoginByCodeModal')}
         />
       </View>
     );

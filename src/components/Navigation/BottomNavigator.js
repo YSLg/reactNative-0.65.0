@@ -8,9 +8,11 @@ import mine from '../../pages/mine'
 import follow from '../../pages/follow'
 const IonIcons = createIconSetFromFontello(fontElloConfig);
 const Tab = createBottomTabNavigator();
+
 const HomeTabs = () => {
   return (
-    <Tab.Navigator>
+    <>
+      <Tab.Navigator screenOptions={{headerShown: false}}>
       <Tab.Screen
         name="首页"
         component={home}
@@ -23,7 +25,7 @@ const HomeTabs = () => {
       />
       <Tab.Screen
         name="关注"
-        component={mine}
+        component={follow}
         options={{
           tabBarLabel: '关注',
           tabBarIcon: ({color, size}) => (
@@ -33,7 +35,7 @@ const HomeTabs = () => {
       />
       <Tab.Screen
         name="我的"
-        component={follow}
+        component={mine}
         options={{
           tabBarLabel: '我的',
           tabBarIcon: ({color, size}) => (
@@ -41,7 +43,9 @@ const HomeTabs = () => {
           ),
         }}
       />
+      
     </Tab.Navigator>
+    </>
   );
 }
 

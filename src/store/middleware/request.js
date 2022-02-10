@@ -5,7 +5,6 @@ import * as Req from '../../utils';
  */
 const TIMEOUT = 5000; // 设置5秒超时
 export default store => next => action => {
-    console.log('request,?????????????????--------', action.type);
     if (!action.type) {
         next(action);
     }
@@ -23,7 +22,6 @@ export default store => next => action => {
                 apiName: apiName,
                 append: append,
             });
-        console.log(request_start);
         Promise.race([
             func(url, params, backend),
             new Promise((resolve, reject) => {

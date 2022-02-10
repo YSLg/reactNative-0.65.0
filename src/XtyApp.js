@@ -9,9 +9,12 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {LoginStackNavigator} from './components/Navigation/StackNavigator';
-import { HomeTabs } from './components/Navigation/BottomNavigator';
+import {HomeTabs} from './components/Navigation/BottomNavigator';
 import {connect} from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import HelpPage from './pages/mine/HelpPage';
+import AboutUsPage from './pages/mine/AboutUsPage';
+import NavigationService from './NavigationService';
 
 import {
   initToken,
@@ -31,7 +34,6 @@ function getHeaderTitle(route) {
       return '我的';
   }
 }
-
 
 class APP extends React.Component {
   constructor() {
@@ -86,8 +88,19 @@ class APP extends React.Component {
     return (
       <NavigationContainer>
         <Stack.Navigator screenOptions={{headerShown: false}}>
-          <Stack.Screen name="Home" component={HomeTabs} />
-          <Stack.Screen name="Login" component={LoginStackNavigator} />
+          <Stack.Screen
+            ref={navigatorRef => {
+              NavigationService.setTopLevelNavigator(navigatorRef);
+            }}
+            name="Home"
+            component={HomeTabs}
+          />
+          <Stack.Screen
+            name="LoginByCodeModal"
+            component={LoginStackNavigator}
+          />
+          <Stack.Screen name="AboutUsPage" component={AboutUsPage} />
+          <Stack.Screen name="HelpPage" component={HelpPage} />
         </Stack.Navigator>
       </NavigationContainer>
     );
