@@ -3,16 +3,15 @@ import {View, Button, Text} from 'react-native';
 import fontElloConfig from '../../assets/fonts/config.json';
 import {createIconSetFromFontello} from 'react-native-vector-icons';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import home from '../../pages/home'
-import mine from '../../pages/mine'
-import follow from '../../pages/follow'
+import home from '../../pages/home';
+import mine from '../../pages/mine';
+import follow from '../../pages/follow';
 const IonIcons = createIconSetFromFontello(fontElloConfig);
 const Tab = createBottomTabNavigator();
 
 const HomeTabs = () => {
   return (
-    <>
-      <Tab.Navigator screenOptions={{headerShown: false}}>
+    <Tab.Navigator screenOptions={{headerShown: false}}>
       <Tab.Screen
         name="首页"
         component={home}
@@ -43,10 +42,8 @@ const HomeTabs = () => {
           ),
         }}
       />
-      
     </Tab.Navigator>
-    </>
   );
-}
+};
 
 export {HomeTabs};
