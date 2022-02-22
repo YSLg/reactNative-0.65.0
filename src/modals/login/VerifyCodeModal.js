@@ -299,7 +299,7 @@ class VerifyCodePage extends Component {
                             editable={true}
                             keyboardType="number-pad"
                             value={this.state.inputCode}
-                            autoFocus={true}
+                            // autoFocus={true}
                             onChangeText={this._changeCode.bind(this)}
                         />
                         <View style={{ marginTop: SS(22) }}>

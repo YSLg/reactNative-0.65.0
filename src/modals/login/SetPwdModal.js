@@ -143,7 +143,7 @@ class SetPwdModal extends Component {
                         >
                             <TextInput
                                 style={styles.inputText}
-                                autoFocus={true}
+                                // autoFocus={true}
                                 placeholder="请输入密码"
                                 placeholderTextColor={
                                     COLOR.SpecColor.COLOR_DCDDE4

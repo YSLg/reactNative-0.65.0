@@ -32,7 +32,6 @@ class LoginByCodeModal extends Component {
     try {
     } catch (e) {
       this.state.msgPage = false;
-      console.log(e);
     }
   }
 
@@ -82,11 +81,6 @@ class LoginByCodeModal extends Component {
     }
 
     if (nextProps.vCodeStatus) {
-      console.log(
-        'VerifyCodeModal --- LoginByCodeModal',
-        `${nextProps.vCode}, ${nextProps.vCodeStatus} `,
-      );
-
       this.setState(
         {
           loading: false,
@@ -128,14 +122,12 @@ class LoginByCodeModal extends Component {
             <Text style={styles.topicText}>欢迎登录小望慧眼</Text>
             <TextInput
               style={styles.inputText}
-              autoFocus={true}
               placeholder="请输入手机号"
               placeholderTextColor="#DCDDE4"
               keyboardType="number-pad"
               maxLength={11}
               onChangeText={this._changeMobile.bind(this)}
               value={this.state.inputMobile}
-              /*value={'15330066919'}*/
               testID="loginByCodeModal_inputMobile"
               selectionColor={'#EDC57E'}
             />

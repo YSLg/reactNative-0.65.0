@@ -134,7 +134,7 @@ class LoginByPwdModal extends Component {
                         <View style={[{ marginTop: SS(94) }, styles.inputView]}>
                             <TextInput
                                 style={styles.inputText}
-                                autoFocus={true}
+                                // autoFocus={true}
                                 placeholder={
                                     mobile && mobile.length > 0
                                         ? mobile

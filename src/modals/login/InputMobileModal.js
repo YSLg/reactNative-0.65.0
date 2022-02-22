@@ -98,7 +98,7 @@ class InputMobileModal extends Component {
                         <Text style={styles.topicText}>请输入手机号</Text>
                         <TextInput
                             style={styles.inputText}
-                            autoFocus={true}
+                            // autoFocus={true}
                             placeholder={
                                 oldMobile.length > 0
                                     ? oldMobile

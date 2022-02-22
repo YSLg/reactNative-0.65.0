@@ -8,7 +8,9 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {LoginStackNavigator} from './components/Navigation/StackNavigator';
+// import {LoginStackNavigator} from './components/Navigation/StackNavigator';
+import LoginByCodeModal from './modals/login/LoginByCodeModal';
+import LoginByPwdModal from './modals/login/LoginByPwdModal';
 import {HomeTabs} from './components/Navigation/BottomNavigator';
 import {connect} from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -97,7 +99,11 @@ class APP extends React.Component {
           />
           <Stack.Screen
             name="LoginByCodeModal"
-            component={LoginStackNavigator}
+            component={LoginByCodeModal}
+          />
+          <Stack.Screen
+            name="LoginByPwdModal"
+            component={LoginByPwdModal}
           />
           <Stack.Screen name="AboutUsPage" component={AboutUsPage} />
           <Stack.Screen name="HelpPage" component={HelpPage} />
